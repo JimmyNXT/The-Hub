@@ -50,8 +50,10 @@ io.on("connection", socket => {
     });
 
     socket.on('Broadcast', (type, message) => {
-        SERVER_CLIENTS.forEach(sc => {
+
+        for(sc in SERVER_CLIENTS)
+        {
             sc.emit('Broadcast', type, message);
-        });
+        }
     });
 });
