@@ -6,7 +6,7 @@ const socketIO = require('socket.io').listen(PORT);
 
 socketIO.on('connection', (sock) => 
 {
-    console.log(sock.handshake);
+    //console.log(sock.handshake);
     sock.emit('message', 'text', 'This is a test');
 });
 
