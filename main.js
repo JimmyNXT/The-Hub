@@ -10,4 +10,4 @@ socketIO.on('connection', (sock) =>
     sock.emit('message', 'text', 'This is a test');
 });
 
-socketIO.on('test', () => {console.log('The test')});
+socketIO.on('test', (text) => {console.log('The test')});
