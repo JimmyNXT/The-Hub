@@ -34,6 +34,8 @@ const SERVER_CLIENTS = {};
 
 io.on("connection", socket => {
     console.log(socket.id);
+    socket.join('global');
+
     socket.on("source", payload => {
         if (payload == "browser")
             BROWSER_CLIENTS[socket.id] = socket;
@@ -50,10 +52,7 @@ io.on("connection", socket => {
     });
 
     socket.on('Broadcast', (type, message) => {
-
-        for(sc in SERVER_CLIENTS)
-        {
-            sc.emit('Broadcast', type, message);
-        }
+        console.log(message);
+        socket.to('global').emit('Broadcast', type, message);
     });
 });
