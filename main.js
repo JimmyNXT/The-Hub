@@ -8,7 +8,6 @@ socketIO.on('connection', (sock) =>
 {
     //console.log(sock.handshake);
     sock.emit('message', 'text', 'This is a test');
-    console.log('welp');
 });
 
-socketIO.on('test', (text) => {console.log('The test')});
+socketIO.on('test', (text) => {console.log(test)});
