@@ -48,4 +48,10 @@ io.on("connection", socket => {
     socket.on('Heartbeat', (type, message) => {
         console.log(message);
     });
+
+    socket.on('Broadcast', (type, message) => {
+        SERVER_CLIENTS.forEach(sc => {
+            sc.emit('Broadcast', type, message);
+        });
+    });
 });
