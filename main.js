@@ -33,6 +33,7 @@ const BROWSER_CLIENTS = {};
 const SERVER_CLIENTS = {};
 
 io.on("connection", socket => {
+    console.log(socket.id);
     socket.on("source", payload => {
         if (payload == "browser")
             BROWSER_CLIENTS[socket.id] = socket;
@@ -44,7 +45,7 @@ io.on("connection", socket => {
         delete SERVER_CLIENTS[socket.id];
     });
 
-    sock.on('Heartbeat', (type, message) => {
+    socket.on('Heartbeat', (type, message) => {
         console.log(message);
     });
 });
